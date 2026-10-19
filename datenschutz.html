@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Datenschutz – Mika Orgaßa</title>
+<meta name="description" content="Datenschutzerklärung von Mika Orgaßa">
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/bricolage-grotesque-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:800;font-display:swap;src:url("fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2")}
+:root{
+  --bg:#F1F2F3;--surface:#FFFFFF;--ink:#1F2328;--muted:#555B63;--line:#D8DBDF;--accent:#2E7D32;--on-accent:#FFFFFF;
+  --btn-bg:#1F2328;--btn-ink:#FFFFFF;--hero-bg:#C6F2BF;--hero-ink:#1F2328;--hero-muted:#33403A;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121416;--surface:#1B1E21;--ink:#ECEEF0;--muted:#A3A9B0;--line:#2E3338;--accent:#9BE58F;--on-accent:#121416;--btn-bg:#9BE58F;--btn-ink:#121416;--hero-bg:#23282C;--hero-ink:#ECEEF0;--hero-muted:#A3A9B0}}
+:root[data-theme="dark"]{--bg:#121416;--surface:#1B1E21;--ink:#ECEEF0;--muted:#A3A9B0;--line:#2E3338;--accent:#9BE58F;--on-accent:#121416;--btn-bg:#9BE58F;--btn-ink:#121416;--hero-bg:#23282C;--hero-ink:#ECEEF0;--hero-muted:#A3A9B0}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(6rem + env(safe-area-inset-top,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:11}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3,h4{font-family:var(--head);letter-spacing:-0.02em;margin:0}
+h2{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:700;margin-bottom:.5rem}
+.sub{color:var(--muted);margin:0 0 2rem;max-width:44rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+.ico{width:1.25rem;height:1.25rem;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Kopfzeile */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem 1rem;flex-wrap:wrap;padding:.9rem 0}
+.top strong{font:700 1.05rem var(--head)}
+.top nav{display:flex;gap:1.25rem;font-weight:500}
+.top nav a{color:var(--ink);text-decoration:none}
+.top nav a:hover{color:var(--accent)}
+.top-right{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.theme{width:2rem;height:2rem;border-radius:.5rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.theme[hidden]{display:none}
+.theme .ico{width:1rem;height:1rem}
+.theme:hover{border-color:var(--accent);color:var(--accent)}
+.theme .sun,.theme .moon{display:none}
+.theme[data-mode="dark"] .sun{display:block}
+.theme[data-mode="light"] .moon{display:block}
+
+/* Hero */
+.hero{background:var(--hero-bg);color:var(--hero-ink);border-radius:1.25rem;padding:clamp(1.5rem,5vw,3rem);margin-bottom:1rem;display:grid;gap:2rem;grid-template-columns:1fr;border:1px solid var(--line)}
+@media (min-width:52rem){.hero{grid-template-columns:1.25fr 1fr;align-items:center}}
+.role{font:500 1rem var(--mono);margin:0 0 .75rem;color:var(--hero-muted)}
+h1{font-size:clamp(2.6rem,8vw,4.6rem);font-weight:800;line-height:1;margin-bottom:1.25rem}
+.pitch{font-size:1.15rem;margin:0 0 1.5rem;max-width:34rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:.6rem;font:700 1rem var(--head);text-decoration:none;border:2px solid var(--btn-bg)}
+.btn.primary{background:var(--btn-bg);color:var(--btn-ink)}
+.btn.ghost{color:var(--hero-ink);border-color:var(--hero-ink)}
+.facts{background:var(--surface);color:var(--ink);border-radius:.9rem;padding:1.1rem 1.5rem;margin:0}
+.facts div{display:grid;grid-template-columns:6.5rem 1fr;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.facts div:last-child{border-bottom:0}
+.facts dt{color:var(--muted);font-size:.92rem;padding-top:.1rem}
+.facts dd{margin:0;font-weight:500}
+.facts dd.status{display:flex;align-items:flex-start;gap:.6rem}
+.dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--accent);flex:none;margin-top:.55rem}
+
+/* Projekte */
+.case{background:var(--surface);border:1px solid var(--line);border-radius:.9rem;margin-bottom:1rem;transition:border-color .15s}
+.case:hover{border-color:var(--accent)}
+.case summary{list-style:none;cursor:pointer;padding:1.4rem 1.5rem;display:block;border-radius:.9rem}
+.case summary::-webkit-details-marker{display:none}
+.case h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem}
+.pr{margin:0 0 .6rem;max-width:44rem}
+.pr b{display:block;font:500 .9rem var(--mono);color:var(--muted);margin-bottom:.1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:1rem 0;padding:0}
+.tags li{font:400 .8rem var(--mono);padding:.1rem .6rem;border:1px solid var(--line);border-radius:99px;color:var(--muted)}
+.toggle{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .7rem;border:1.5px solid var(--hero-bg);border-radius:.45rem;background:var(--hero-bg);color:var(--hero-ink);font:700 .8rem var(--head)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .toggle{border-color:var(--btn-bg);background:var(--btn-bg);color:var(--btn-ink)}}
+:root[data-theme="dark"] .toggle{border-color:var(--btn-bg);background:var(--btn-bg);color:var(--btn-ink)}
+.toggle .ico{width:.9rem;height:.9rem}
+.case summary:hover .toggle{background:transparent;color:var(--btn-bg)}
+.case .lbl::before{content:"Fallstudie lesen"}
+.case[open] .lbl::before{content:"Fallstudie schließen"}
+.chev{transition:transform .2s}
+.case[open] .chev{transform:rotate(180deg)}
+.body{padding:0 1.5rem 1.5rem;border-top:1px solid var(--line)}
+.body h4{font-size:1rem;font-weight:700;margin:1.25rem 0 .25rem}
+.body p,.body ul{margin:0;max-width:44rem}
+.body ul{padding-left:1.2rem}
+
+/* Skills */
+.skills{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:.9rem;padding:1.4rem 1.5rem}
+.tier h3{font-size:1.15rem;font-weight:700}
+.tier .lvl{margin:.1rem 0 1.1rem;color:var(--muted);font-size:.95rem}
+.grp{display:grid;grid-template-columns:2.25rem 1fr;gap:.25rem .75rem;padding:.75rem 0;border-top:1px solid var(--line)}
+.grp .badge{width:2.25rem;height:2.25rem;border-radius:.6rem;background:var(--hero-bg);color:var(--hero-ink);display:grid;place-items:center}
+.grp h4{font-size:.95rem;font-weight:700;align-self:center}
+.chips{grid-column:2;display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}
+.chips li{font:400 .85rem var(--mono);padding:.15rem .65rem;border:1px solid var(--line);border-radius:.4rem}
+
+/* Werdegang */
+.log{list-style:none;margin:0;padding:0 0 0 1.5rem;border-left:2px solid var(--line)}
+.log>li{position:relative;padding:0 0 1.75rem 1rem}
+.log>li::before{content:"";position:absolute;left:calc(-1.5rem - 7px);top:.55rem;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.log time{font:400 .85rem var(--mono);color:var(--muted)}
+.log h3{font-size:1.1rem;font-weight:700;margin:.1rem 0 .35rem}
+.log p,.log ul{margin:0 0 .5rem;max-width:44rem}
+.log ul{padding-left:1.2rem}
+.log ul li{margin-bottom:.35rem}
+
+/* Kontakt */
+.contact{display:grid;gap:.75rem;margin:1.5rem 0 0;padding:0;list-style:none;font-size:1.1rem}
+.contact li{display:flex;align-items:center;gap:.7rem}
+.contact .ico{color:var(--accent)}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chev,.case{transition:none}}
+
+.doc{padding:1rem 0 3rem}
+.doc h1{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:800;line-height:1.1;margin:1rem 0 1.5rem}
+.doc h2{font-size:1.2rem;font-weight:700;margin:2rem 0 .4rem}
+.doc p,.doc ul{max-width:44rem;margin:0 0 .75rem}
+.doc ul{padding-left:1.2rem}
+.top a.home{color:var(--ink);text-decoration:none}
+footer .links{display:flex;gap:1.5rem;flex-wrap:wrap}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="home" href="index.html"><strong>Mika Orgaßa</strong></a>
+    <nav aria-label="Navigation"><a href="index.html">Zur Startseite</a></nav>
+  </div>
+  <main class="doc">
+    <h1>Datenschutzerklärung</h1>
+    <h2>Verantwortlicher</h2>
+    <p>Mika Aleksander Orgaßa, Düsseldorfer Straße 150, 40721 Hilden<br>Telefon: +49 152 29226727<br>E-Mail: <a href="mailto:mika.orgassa@icloud.com">mika.orgassa@icloud.com</a></p>
+
+    <h2>Hosting über GitHub Pages</h2>
+    <p>Diese Seite wird bei GitHub Pages gehostet, einem Dienst der GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA. Beim Aufruf der Seite verarbeitet der Anbieter technisch bedingt Daten wie die IP-Adresse, Datum und Uhrzeit des Aufrufs, die angeforderte Datei und Angaben zum Browser. Das ist nötig, um die Seite auszuliefern und sicher zu betreiben. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer funktionierenden und sicheren Darstellung dieser Seite).</p>
+    <p>Dabei kann eine Übermittlung von Daten in die USA stattfinden. Informationen dazu und zu den Schutzmaßnahmen findest du in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+
+    <h2>Keine Cookies, kein Tracking</h2>
+    <p>Diese Seite setzt keine Cookies und verwendet keine Analyse- oder Werbedienste. Schriften werden von dieser Seite selbst ausgeliefert und nicht von fremden Servern nachgeladen.</p>
+
+    <h2>Lokale Speicherung der Design-Einstellung</h2>
+    <p>Wenn du oben rechts zwischen hellem und dunklem Design wechselst, speichert dein Browser diese Auswahl lokal auf deinem Gerät, damit sie beim nächsten Besuch erhalten bleibt. Diese Information wird nicht an mich oder an Dritte übertragen.</p>
+
+    <h2>Lebenslauf zum Herunterladen</h2>
+    <p>Wenn du den Lebenslauf als PDF öffnest, wird die Datei von denselben Servern ausgeliefert, und der Abruf wird wie oben beschrieben technisch verarbeitet. Das PDF enthält ein Foto sowie meine Kontaktdaten.</p>
+
+    <h2>Kontaktaufnahme</h2>
+    <p>Wenn du mir per E-Mail oder Telefon schreibst, verarbeite ich deine Angaben, um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, wenn es um vorvertragliche Maßnahmen oder einen Vertrag geht, sonst Art. 6 Abs. 1 lit. f DSGVO. Ich lösche die Daten, sobald sie nicht mehr erforderlich sind, außer gesetzliche Aufbewahrungspflichten stehen dem entgegen.</p>
+
+    <h2>Externe Links</h2>
+    <p>Diese Seite verlinkt auf LinkedIn und GitHub. Erst wenn du einen dieser Links anklickst, wird eine Verbindung zu den Servern dieser Anbieter aufgebaut. Für die dortige Verarbeitung sind allein die Anbieter verantwortlich, bitte beachte deren Datenschutzhinweise.</p>
+
+    <h2>Deine Rechte</h2>
+    <p>Du hast das Recht auf Auskunft über die zu dir gespeicherten Daten, auf Berichtigung, Löschung und Einschränkung der Verarbeitung, auf Datenübertragbarkeit und auf Widerspruch gegen die Verarbeitung auf Grundlage berechtigter Interessen. Wende dich dafür an die oben genannte E-Mail-Adresse.</p>
+    <p>Außerdem hast du das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Zuständig ist für mich die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen, Kavalleriestraße 2–4, 40213 Düsseldorf, <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a>.</p>
+
+    <h2>Stand</h2>
+    <p>Oktober 2026</p>
+  </main>
+  <footer><div class="links"><span>© 2026 Mika Orgaßa</span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div></footer>
+</div>
+<script>
+(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}})();
+</script>
+</body>
+</html>
