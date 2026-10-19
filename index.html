@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mika Orgaßa – Softwareentwickler (Fullstack)</title>
+<meta name="description" content="Mika Orgaßa, Fachinformatiker für Anwendungsentwicklung aus Hilden. PHP, JavaScript, MySQL. Offen für Festanstellung und Freelance-Projekte.">
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/bricolage-grotesque-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/bricolage-grotesque-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:800;font-display:swap;src:url("fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2")}
+:root{
+  --bg:#F1F2F3;--surface:#FFFFFF;--ink:#1F2328;--muted:#555B63;--line:#D8DBDF;--accent:#2E7D32;--on-accent:#FFFFFF;
+  --btn-bg:#1F2328;--btn-ink:#FFFFFF;--hero-bg:#C6F2BF;--hero-ink:#1F2328;--hero-muted:#33403A;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121416;--surface:#1B1E21;--ink:#ECEEF0;--muted:#A3A9B0;--line:#2E3338;--accent:#9BE58F;--on-accent:#121416;--btn-bg:#9BE58F;--btn-ink:#121416;--hero-bg:#23282C;--hero-ink:#ECEEF0;--hero-muted:#A3A9B0}}
+:root[data-theme="dark"]{--bg:#121416;--surface:#1B1E21;--ink:#ECEEF0;--muted:#A3A9B0;--line:#2E3338;--accent:#9BE58F;--on-accent:#121416;--btn-bg:#9BE58F;--btn-ink:#121416;--hero-bg:#23282C;--hero-ink:#ECEEF0;--hero-muted:#A3A9B0}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(6rem + env(safe-area-inset-top,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:11}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3,h4{font-family:var(--head);letter-spacing:-0.02em;margin:0}
+h2{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:700;margin-bottom:.5rem}
+.sub{color:var(--muted);margin:0 0 2rem;max-width:44rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+.ico{width:1.25rem;height:1.25rem;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Kopfzeile */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line);margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem 1rem;flex-wrap:wrap;padding:.9rem 0}
+.top strong{font:700 1.05rem var(--head)}
+.top nav{display:flex;gap:1.25rem;font-weight:500}
+.top nav a{color:var(--ink);text-decoration:none}
+.top nav a:hover{color:var(--accent)}
+.top-right{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.theme{width:2rem;height:2rem;border-radius:.5rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.theme[hidden]{display:none}
+.theme .ico{width:1rem;height:1rem}
+.theme:hover{border-color:var(--accent);color:var(--accent)}
+.theme .sun,.theme .moon{display:none}
+.theme[data-mode="dark"] .sun{display:block}
+.theme[data-mode="light"] .moon{display:block}
+
+/* Hero */
+.hero{background:var(--hero-bg);color:var(--hero-ink);border-radius:1.25rem;padding:clamp(1.5rem,5vw,3rem);margin-bottom:1rem;display:grid;gap:2rem;grid-template-columns:1fr;border:1px solid var(--line)}
+@media (min-width:52rem){.hero{grid-template-columns:1.25fr 1fr;align-items:center}}
+.role{font:500 1rem var(--mono);margin:0 0 .75rem;color:var(--hero-muted)}
+h1{font-size:clamp(2.6rem,8vw,4.6rem);font-weight:800;line-height:1;margin-bottom:1.25rem}
+.pitch{font-size:1.15rem;margin:0 0 1.5rem;max-width:34rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:.6rem;font:700 1rem var(--head);text-decoration:none;border:2px solid var(--btn-bg)}
+.btn.primary{background:var(--btn-bg);color:var(--btn-ink)}
+.btn.ghost{color:var(--hero-ink);border-color:var(--hero-ink)}
+.facts{background:var(--surface);color:var(--ink);border-radius:.9rem;padding:1.1rem 1.5rem;margin:0}
+.facts div{display:grid;grid-template-columns:6.5rem 1fr;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--line)}
+.facts div:last-child{border-bottom:0}
+.facts dt{color:var(--muted);font-size:.92rem;padding-top:.1rem}
+.facts dd{margin:0;font-weight:500}
+.facts dd.status{display:flex;align-items:flex-start;gap:.6rem}
+.dot{width:.6rem;height:.6rem;border-radius:50%;background:var(--accent);flex:none;margin-top:.55rem}
+
+/* Projekte */
+.case{background:var(--surface);border:1px solid var(--line);border-radius:.9rem;margin-bottom:1rem;transition:border-color .15s}
+.case:hover{border-color:var(--accent)}
+.case summary{list-style:none;cursor:pointer;padding:1.4rem 1.5rem;display:block;border-radius:.9rem}
+.case summary::-webkit-details-marker{display:none}
+.case h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem}
+.pr{margin:0 0 .6rem;max-width:44rem}
+.pr b{display:block;font:500 .9rem var(--mono);color:var(--muted);margin-bottom:.1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:1rem 0;padding:0}
+.tags li{font:400 .8rem var(--mono);padding:.1rem .6rem;border:1px solid var(--line);border-radius:99px;color:var(--muted)}
+.toggle{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .7rem;border:1.5px solid var(--hero-bg);border-radius:.45rem;background:var(--hero-bg);color:var(--hero-ink);font:700 .8rem var(--head)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .toggle{border-color:var(--btn-bg);background:var(--btn-bg);color:var(--btn-ink)}}
+:root[data-theme="dark"] .toggle{border-color:var(--btn-bg);background:var(--btn-bg);color:var(--btn-ink)}
+.toggle .ico{width:.9rem;height:.9rem}
+.case summary:hover .toggle{background:transparent;color:var(--btn-bg)}
+.case .lbl::before{content:"Fallstudie lesen"}
+.case[open] .lbl::before{content:"Fallstudie schließen"}
+.chev{transition:transform .2s}
+.case[open] .chev{transform:rotate(180deg)}
+.body{padding:0 1.5rem 1.5rem;border-top:1px solid var(--line)}
+.body h4{font-size:1rem;font-weight:700;margin:1.25rem 0 .25rem}
+.body p,.body ul{margin:0;max-width:44rem}
+.body ul{padding-left:1.2rem}
+
+/* Skills */
+.skills{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr))}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:.9rem;padding:1.4rem 1.5rem}
+.tier h3{font-size:1.15rem;font-weight:700}
+.tier .lvl{margin:.1rem 0 1.1rem;color:var(--muted);font-size:.95rem}
+.grp{display:grid;grid-template-columns:2.25rem 1fr;gap:.25rem .75rem;padding:.75rem 0;border-top:1px solid var(--line)}
+.grp .badge{width:2.25rem;height:2.25rem;border-radius:.6rem;background:var(--hero-bg);color:var(--hero-ink);display:grid;place-items:center}
+.grp h4{font-size:.95rem;font-weight:700;align-self:center}
+.chips{grid-column:2;display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}
+.chips li{font:400 .85rem var(--mono);padding:.15rem .65rem;border:1px solid var(--line);border-radius:.4rem}
+
+/* Werdegang */
+.log{list-style:none;margin:0;padding:0 0 0 1.5rem;border-left:2px solid var(--line)}
+.log>li{position:relative;padding:0 0 1.75rem 1rem}
+.log>li::before{content:"";position:absolute;left:calc(-1.5rem - 7px);top:.55rem;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.log time{font:400 .85rem var(--mono);color:var(--muted)}
+.log h3{font-size:1.1rem;font-weight:700;margin:.1rem 0 .35rem}
+.log p,.log ul{margin:0 0 .5rem;max-width:44rem}
+.log ul{padding-left:1.2rem}
+.log ul li{margin-bottom:.35rem}
+
+/* Kontakt */
+.contact{display:grid;gap:.75rem;margin:1.5rem 0 0;padding:0;list-style:none;font-size:1.1rem}
+.contact li{display:flex;align-items:center;gap:.7rem}
+.contact .ico{color:var(--accent)}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chev,.case{transition:none}}
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E💻%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+  <symbol id="i-term" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="currentColor"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+</svg>
+
+<div class="wrap">
+  <div class="top">
+    <strong>Mika Orgaßa</strong>
+    <div class="top-right">
+    <nav aria-label="Hauptnavigation">
+      <a href="#projekte">Projekte</a>
+      <a href="#skills">Skills</a>
+      <a href="#werdegang">Werdegang</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <button class="theme" id="theme" type="button" hidden aria-label="Design wechseln"><svg class="ico sun" aria-hidden="true"><use href="#i-sun"/></svg><svg class="ico moon" aria-hidden="true"><use href="#i-moon"/></svg></button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div>
+      <p class="role">Softwareentwickler, Fullstack</p>
+      <h1>Mika Orgaßa</h1>
+      <p class="pitch">Frisch ausgelernter Fachinformatiker für Anwendungsentwicklung mit drei Jahren Praxis in einem digitalen Dienstleistungsunternehmen. Ich baue Webanwendungen mit PHP und JavaScript und kenne den Weg von der Entwicklung über die Qualitätssicherung bis zum Betrieb.</p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:mika.orgassa@icloud.com">E-Mail schreiben</a>
+        <a class="btn ghost" href="Lebenslauf_Mika_Orgassa.pdf" target="_blank" rel="noopener">Lebenslauf (PDF)</a>
+      </div>
+    </div>
+    <dl class="facts">
+      <div><dt>Status</dt><dd>Offen für Festanstellung, Freelance und Projekte</dd></div>
+      <div><dt>Abschluss</dt><dd>Fachinformatiker für Anwendungsentwicklung, IHK, Juni 2026</dd></div>
+      <div><dt>Erfahrung</dt><dd>3 Jahre bei der Encoding Management Service – EMS GmbH</dd></div>
+      <div><dt>Stack</dt><dd>PHP, JavaScript, MySQL, HTML/CSS, Git</dd></div>
+      <div><dt>Ort</dt><dd>Hilden, NRW</dd></div>
+      <div><dt>Sprachen</dt><dd>Deutsch, Englisch (B1)</dd></div>
+    </dl>
+  </header>
+
+  <section id="projekte">
+    <h2>Projekte</h2>
+    <p class="sub">Zwei meiner größten Projekte aus der Ausbildung, die ich allein von der Idee bis zur Abnahme umgesetzt habe.</p>
+
+    <details class="case">
+      <summary>
+        <h3>Genre-Code-Browser für Hörbuch-Produkte</h3>
+        <p class="pr"><b>Problem</b>Zu jedem Hörbuch gehört ein Genre-Code, damit Händler es richtig einordnen. Es gibt über 10.000 verschiedene Codes, und das Team hatte keine effiziente Möglichkeit, die passenden für ein Produkt zu finden.</p>
+        <p class="pr"><b>Ergebnis</b>Ein durchsuchbarer Katalog direkt im System, durch den sich Mitarbeiter Schritt für Schritt zum passenden Code klicken. Kunden erhalten dadurch Produkte mit einheitlichen, im Handel etablierten Genre-Codes.</p>
+        <ul class="tags"><li>PHP</li><li>MySQL</li><li>JavaScript</li><li>HTML/CSS</li></ul>
+        <span class="toggle"><span class="lbl"></span><svg class="ico chev" aria-hidden="true"><use href="#i-chev"/></svg></span>
+      </summary>
+      <div class="body">
+        <h4>Ausgangslage</h4>
+        <p>Hörbücher werden im Handel über Thema-Codes verschlagwortet, es gibt über 10.000 davon. Kunden erwarten diese Codes, doch die Mitarbeiter hatten im System keine Möglichkeit, den passenden zu finden.</p>
+        <h4>Lösung</h4>
+        <p>In den Produkteigenschaften öffnet ein Button den Code-Browser, ein Popup mit aufklappbarem Baum. Jeder Klick öffnet die nächste, spezifischere Ebene und zeigt eine Beschreibung. Codes lassen sich per Mehrfachauswahl zuweisen und in einer Liste verwalten. Eine Suche findet Codes über Name oder ID.</p>
+        <h4>Meine Rolle</h4>
+        <p>Konzept, Datenimport, Backend, Oberfläche und Integration, allein umgesetzt.</p>
+        <h4>Technik</h4>
+        <ul>
+          <li>Die Codes kommen als JSON von der offiziellen Website, ein eigenes Skript importiert sie in MySQL.</li>
+          <li>Ein zusätzliches Feld „parent“ bildet die Hierarchie ab.</li>
+          <li>Der Baum wird serverseitig mit PHP aufgebaut: Beim Klick liefert die Datenbank gezielt die Unterebene, nicht alle Codes auf einmal. Die Navigation reagiert ohne spürbare Wartezeit.</li>
+          <li>Der Stack war im Unternehmen vorgegeben, die Lösung habe ich darin entworfen.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary>
+        <h3>Report Checker – Monitoring für Berichtslieferungen</h3>
+        <p class="pr"><b>Problem</b>Kunden schicken täglich Berichte über die Nutzung von Musik und Hörbüchern. Fehlte einer, fiel das nur durch Zufall oder durch Nachfrage auf.</p>
+        <p class="pr"><b>Ergebnis</b>Ein Überwachungswerkzeug prüft jeden Tag automatisch, ob alle Berichte angekommen sind, und meldet Lücken per E-Mail und in einer filterbaren Übersicht. Mein IHK-Abschlussprojekt, vom Auftraggeber abgenommen.</p>
+        <ul class="tags"><li>PHP</li><li>FuelPHP</li><li>Cronjob</li><li>SCSS</li><li>UML</li></ul>
+        <span class="toggle"><span class="lbl"></span><svg class="ico chev" aria-hidden="true"><use href="#i-chev"/></svg></span>
+      </summary>
+      <div class="body">
+        <h4>Ausgangslage</h4>
+        <p>Das Unternehmen, ein digitaler Musik- und Hörbuchvertrieb, bekam täglich Berichte mit Nutzungsdaten von Kunden. Fehlte einer, fiel das nur durch Zufall in den Logs oder durch Nachfrage auf.</p>
+        <h4>Lösung</h4>
+        <ul>
+          <li>Ein Cronjob prüft täglich die letzten 30 Tage, protokolliert auf Wunsch und verschickt eine Statusübersicht per E-Mail.</li>
+          <li>Ein Frontend-Modul zeigt den Bestand pro Plattform als Tabelle, filterbar nach Plattform, Zeitraum und Status, nur für Administratoren.</li>
+        </ul>
+        <h4>Meine Rolle</h4>
+        <p>Analyse, Planung mit Pflichtenheft, UML-Diagrammen und Mockups, Umsetzung, Tests, Abnahme und Dokumentation, allein in 80 Stunden. Der Code wurde im Vier-Augen-Prinzip geprüft.</p>
+        <h4>Technik</h4>
+        <ul>
+          <li>PHP mit FuelPHP im bestehenden HMVC-Aufbau, das Modul lief eigenständig neben den bestehenden Komponenten.</li>
+          <li>Die Prüflogik erzeugt alle erwarteten Tage, entfernt die vorhandenen und meldet den Rest.</li>
+          <li>Ein konfigurierbarer Lieferverzug pro Plattform verhindert Fehlalarme.</li>
+          <li>Mailversand mit Klartext-Fallback, Ausnahmen werden abgefangen und protokolliert.</li>
+        </ul>
+        <h4>Ergebnis</h4>
+        <p>Cronjob und Frontend-Modul wurden vollständig umgesetzt und vom Auftraggeber abgenommen. Der Cronjob läuft im 24-Stunden-Takt, prüft die letzten 30 Tage je Plattform und verschickt die Ergebnisse als Tabelle per E-Mail, auf Wunsch zusätzlich als Protokolldatei. Das Frontend-Modul ist in das bestehende System eingebunden, mit Navigation, Übersetzungen und Styles im vorhandenen Design. Pro Plattform zeigt es „vollständig“ oder die Liste der fehlenden Tage, die Filter für Plattform, Zeitraum und Status lassen sich kombinieren. Dazu entstand ein Benutzerhandbuch für Entwickler. Beim Code-Review gab es nur Anmerkungen zu Styles und Icons, keine Logikfehler.</p>
+      </div>
+    </details>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="sub">Ich zeige, wie sicher ich mich in einem Thema fühle, damit du weißt, was dich erwartet.</p>
+    <div class="skills">
+      <div class="tier">
+        <h3>Sicher im Alltag</h3><p class="lvl">Täglich im Einsatz</p>
+        <div class="grp"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-code"/></svg></span><h4>Webentwicklung</h4>
+          <ul class="chips"><li>PHP</li><li>JavaScript</li><li>HTML</li><li>CSS</li></ul></div>
+        <div class="grp"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-db"/></svg></span><h4>Daten und Schnittstellen</h4>
+          <ul class="chips"><li>MySQL</li><li>REST APIs</li></ul></div>
+        <div class="grp"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-term"/></svg></span><h4>Werkzeuge</h4>
+          <ul class="chips"><li>Git</li><li>GitLab</li><li>Linux</li><li>Terminal</li><li>Claude</li><li>Claude Code</li></ul></div>
+        <div class="grp"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span><h4>Qualität</h4>
+          <ul class="chips"><li>Manuelles Testing</li><li>Fehleranalyse</li><li>Dokumentation</li></ul></div>
+      </div>
+      <div class="tier">
+        <h3>Gute Grundlagen</h3><p class="lvl">Im Team eingesetzt</p>
+        <div class="grp"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-layout"/></svg></span><h4>Frontend</h4>
+          <ul class="chips"><li>React</li><li>Web Components</li><li>Tailwind</li><li>AJAX</li></ul></div>
+        <div class="grp"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-server"/></svg></span><h4>Backend</h4>
+          <ul class="chips"><li>FuelPHP</li></ul></div>
+        <div class="grp"><span class="badge"><svg class="ico" aria-hidden="true"><use href="#i-cloud"/></svg></span><h4>Betrieb</h4>
+          <ul class="chips"><li>Automatisierte Deployment-Abläufe</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="werdegang">
+    <h2>Werdegang</h2>
+    <p class="sub">Das Neueste zuerst.</p>
+    <ol class="log">
+      <li><time>Juni 2026</time><h3>Abschluss: Fachinformatiker für Anwendungsentwicklung</h3><p>IHK-Prüfung bestanden am 25.06.2026.</p></li>
+      <li><time>August 2023 bis Juni 2026</time><h3>Ausbildung bei der Encoding Management Service – EMS GmbH, Leverkusen</h3>
+        <p>Die EMS ist ein digitaler Musik- und Hörbuchvertrieb. Das waren meine Aufgabenbereiche:</p>
+        <ul>
+          <li><strong>Entwicklung:</strong> Webanwendungen mit PHP, JavaScript, HTML/CSS und MySQL, REST APIs und Web Components. Beteiligt an React- und FuelPHP-Projekten, GitLab-Workflow im Team.</li>
+          <li><strong>Qualitätssicherung:</strong> Wartung und Prüfung digitaler Musik- und Hörbuchprodukte mit manuellen Tests, Fehlersuche und Dokumentation.</li>
+          <li><strong>Operations und Support:</strong> Überwachung des Produktbestands, Fehlerbearbeitung und First-Level-Support mit ClickUp und Businessmap.</li>
+          <li><strong>Gesamte Supply Chain:</strong> Mitarbeit in allen Abteilungen, darunter eine Woche beim Mutterunternehmen in Berlin, um das große Ganze des Unternehmens zu verstehen und nicht nur meinen Teil in der Entwicklung.</li>
+        </ul></li>
+      <li><time>Juli 2022 und April 2023</time><h3>Praktika in der Softwareentwicklung</h3><p>Zwei Praktika bei der EMS GmbH, aus denen die Ausbildung hervorging.</p></li>
+    </ol>
+  </section>
+
+  <section id="kontakt">
+    <h2>Kontakt</h2>
+    <p class="sub">Du hast eine offene Stelle oder ein Projekt? Schreib mir, ich melde mich schnellstmöglich.</p>
+    <div class="btns"><a class="btn primary" href="mailto:mika.orgassa@icloud.com">E-Mail schreiben</a></div>
+    <ul class="contact">
+      <li><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+4915229226727">+49 152 29226727</a></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg><a href="https://www.linkedin.com/in/mika-orgassa-1a2a81287/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-github"/></svg><a href="https://github.com/MikaOrg" target="_blank" rel="noopener">GitHub</a></li>
+      <li><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg><a href="Lebenslauf_Mika_Orgassa.pdf" target="_blank" rel="noopener">Lebenslauf</a></li>
+    </ul>
+  </section>
+
+  <footer>© 2026 Mika Orgaßa</footer>
+</div>
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById("theme");
+  if(!btn)return;
+  var mq=window.matchMedia("(prefers-color-scheme: dark)");
+  var saved=null;
+  try{saved=localStorage.getItem("theme")}catch(e){}
+  if(saved==="light"||saved==="dark")root.setAttribute("data-theme",saved);
+  function mode(){var t=root.getAttribute("data-theme");return t||(mq.matches?"dark":"light")}
+  function sync(){var m=mode();btn.setAttribute("data-mode",m);btn.setAttribute("aria-label",m==="dark"?"Zum hellen Design wechseln":"Zum dunklen Design wechseln")}
+  btn.hidden=false;sync();
+  btn.addEventListener("click",function(){
+    var n=mode()==="dark"?"light":"dark";
+    root.setAttribute("data-theme",n);
+    try{localStorage.setItem("theme",n)}catch(e){}
+    sync();
+  });
+  if(mq.addEventListener)mq.addEventListener("change",sync);
+})();
+</script>
+</body>
+</html>
